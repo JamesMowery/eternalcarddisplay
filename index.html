@@ -48,7 +48,7 @@ $(this).on('paste', function(e) {
   for (let value of splitData) {
       //data1 = cardInput.push(value.charAt(0));
       //console.log(value);
-      d1 = value.trim().charAt(0);
+      d1 = value.trim().split(' ')[0];
       //data2 = cardInput.push(value.split('\(')[0].substr(2));
       d2 = value.split('\(')[0].trim().substr(2);
 
