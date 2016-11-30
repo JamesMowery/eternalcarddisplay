@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+  <title>Eternal Card Display</title>
+  <style>
+  body {
+    color: #FFF;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  h2 {
+    color: #444;
+  }
+  table {
+    font-size: 1.1em;
+    line-height: 0.8em;
+  }
+  tr, td {
+    line-height: 0.1em;
+    height: 1px;
+  }
+  </style>
+</head>
+<body>
+  <h2>Paste Your Eternal Deck</h2>
+
+      <table id="myTable" style="width:100%">
+       <tr>
+         <th></th>
+         <th></th>
+       </tr>
+     </table>
+
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script>
+$(this).on('paste', function(e) {
+  $('#myTable').empty();
+
+  var pasteData = e.originalEvent.clipboardData.getData('text');
+  var splitData = pasteData.split(')');
+
+  var cardInput = [];
+  var count = 0;
+  var data1 = "";
+  var data2 = "";
+  var d1 = "";
+  var d2 = "";
+  for (let value of splitData) {
+    if (count > 0) {
+      data1 = cardInput.push(value.charAt(1));
+      d1 = value.charAt(1);
+      data2 = cardInput.push(value.split('\(')[0].substr(3));
+      d2 = value.split('\(')[0].substr(3);
+    } else {
+      data1 = cardInput.push(value.charAt(0));
+      d1 = value.charAt(0);
+      data2 = cardInput.push(value.split('\(')[0].substr(2));
+      d2 = value.split('\(')[0].substr(2);
+    }
+    console.log(data1);
+    $('#myTable').append('<tr><td>', d1, '</td><td>', d2, '</td></tr>');
+    //$('#myTable').append('<tr><td>$data1</td><td>$data2</td></tr>');
+    count++;
+  }
+  $('h2').hide();
+
+  /*
+  console.log("\nSPLIT");
+  console.log(splitData);
+  console.log("\nCARD");
+  console.log(cardInput);
+
+  */
+
+  //var cardCount = splitData.
+  //var cardName = splitData
+  // console.log(splitData);
+
+  $('body').css({backgroundColor: '#008000'})
+});
+</script>
+
+</body>
+</html>
