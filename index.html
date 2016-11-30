@@ -15,7 +15,7 @@
   }
   table {
     font-size: 1.1em;
-    line-height: 0.8em;
+    line-height: 0.9em;
     text-shadow: #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px,
              #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;
   }
@@ -46,20 +46,15 @@ $(this).on('paste', function(e) {
   var d1 = "";
   var d2 = "";
   for (let value of splitData) {
-    if (count > 0) {
-      data1 = cardInput.push(value.charAt(1));
-      d1 = value.charAt(1);
-      data2 = cardInput.push(value.split('\(')[0].substr(3));
-      d2 = value.split('\(')[0].substr(3);
-    } else {
-      data1 = cardInput.push(value.charAt(0));
-      d1 = value.charAt(0);
-      data2 = cardInput.push(value.split('\(')[0].substr(2));
-      d2 = value.split('\(')[0].substr(2);
-    }
-    console.log(data1);
-    $('#myTable').append('<tr><td>', d1, '</td><td>', d2, '</td></tr>');
-    //$('#myTable').append('<tr><td>$data1</td><td>$data2</td></tr>');
+      //data1 = cardInput.push(value.charAt(0));
+      //console.log(value);
+      d1 = value.trim().charAt(0);
+      //data2 = cardInput.push(value.split('\(')[0].substr(2));
+      d2 = value.split('\(')[0].trim().substr(2);
+
+     //console.log(d1);
+
+     $('#myTable').append("<tr><td>"+d1+"</td><td>"+d2+"</td></tr>");
     count++;
   }
   $('h2').hide();
