@@ -34,43 +34,51 @@
      </table>
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script>
-$(this).on('paste', function(e) {
-  $('#myTable').empty();
 
-  var pasteData = e.originalEvent.clipboardData.getData('text');
-  var splitData = pasteData.split(')');
+$( document ).ready(function() {
 
-  var cardInput = [];
-  var count = 0;
-  var data1 = "";
-  var data2 = "";
-  var d1 = "";
-  var d2 = "";
-  for (let value of splitData) {
-      //data1 = cardInput.push(value.charAt(0));
-      //console.log(value);
-      d1 = value.trim().split(' ')[0];
-      //data2 = cardInput.push(value.split('\(')[0].substr(2));
-      d2 = value.split('\(')[0].trim().substr(2);
+  $(this).on('paste', function(e) {
+    $('#myTable').empty();
 
-     //console.log(d1);
+    var pasteData = e.originalEvent.clipboardData.getData('text');
+    var splitData = pasteData.split(')');
 
-     $('#myTable').append("<tr><td>"+d1+"</td><td>"+d2+"</td></tr>");
-    count++;
-  }
-  $('h2').hide();
+    var cardInput = [];
+    var count = 0;
+    var data1 = "";
+    var data2 = "";
+    var d1 = "";
+    var d2 = "";
+    for (let value of splitData) {
+        //data1 = cardInput.push(value.charAt(0));
+        //console.log(value);
+        d1 = value.trim().split(' ')[0];
+        //data2 = cardInput.push(value.split('\(')[0].substr(2));
+        d2 = value.split('\(')[0].trim().substr(2);
 
-  /*
-  console.log("\nSPLIT");
-  console.log(splitData);
-  console.log("\nCARD");
-  console.log(cardInput);
-  */
-  //var cardCount = splitData.
-  //var cardName = splitData
-  // console.log(splitData);
+       //console.log(d1);
 
-  $('body').css({backgroundColor: '#0000FF'})
+       $('#myTable').append("<tr><td>"+d1+"</td><td>"+d2+"</td></tr>");
+      count++;
+    }
+    $('h2').hide();
+
+    /*
+    console.log("\nSPLIT");
+    console.log(splitData);
+    console.log("\nCARD");
+    console.log(cardInput);
+    */
+    //var cardCount = splitData.
+    //var cardName = splitData
+    // console.log(splitData);
+
+    $('body').css({backgroundColor: '#0000FF'})
+  });
+
+  $("html").click(function() {
+    $('#myTable').empty();
+  });
 });
 </script>
 
